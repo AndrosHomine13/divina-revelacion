@@ -1,18 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Divina Revelación</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divina Revelación</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Catálogo de Productos</h1>
-  {% for producto in productos %}
-    <div>
-      <h2>{{ producto.nombre }}</h2>
-      <p>{{ producto.descripcion }}</p>
-      <strong>{{ producto.precio }}</strong><br>
-      <img src="{{ url_for('static', filename='images/productos/' + producto.imagen) }}" width="150">
+    <header>
+        <img src="../static/images/logo.png" alt="Logo Divina Revelación" class="logo">
+        <nav>
+            <a href="#about">Nosotros</a>
+            <a href="#catalogo">Catálogo</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Divina Revelación</h1>
+        <p>Joyas y accesorios con estilo, elegancia y amor.</p>
+    </section>
+
+    <section id="about" class="about">
+        <h2>Sobre nosotros</h2>
+        <p>
+            Divina Revelación nace del amor por los detalles, ofreciendo joyas y accesorios que realzan la belleza de cada mujer. 
+            Cada pieza es cuidadosamente seleccionada para conectar con el alma, con un estilo único, moderno y lleno de elegancia.
+        </p>
+    </section>
+
+    <section id="catalogo" class="catalog">
+    <h2>Catálogo Destacado</h2>
+    <div class="productos">
+        {% for producto in productos %}
+            <div class="producto">
+                <img src="{{ url_for('static', filename='images/productos/' + producto.imagen) }}" alt="{{ producto.nombre }}">
+                <h3>{{ producto.nombre }}</h3>
+                <p>{{ producto.descripcion }}</p>
+                <span>{{ producto.precio }}</span>
+            </div>
+        {% endfor %}
     </div>
-  {% endfor %}
+
+
+    <a href="{{ url_for('static', filename='catalogo.pdf') }}" class="btn" download>Descargar Catálogo Completo</a>
+</section>
+
+
+    <section id="contacto" class="contacto">
+        <h2>Contacto</h2>
+        <p>¿Te interesa algún producto? ¡Escríbenos directamente por WhatsApp!</p>
+        <a href="https://wa.me/573123614448" class="btn" target="_blank">Contactar por WhatsApp</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Divina Revelación. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>

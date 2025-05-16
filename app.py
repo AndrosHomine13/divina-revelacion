@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
-import json, os
+import json
+import os
 
 app = Flask(__name__)
-app.secret_key = 'divina_clave_super_segura'
+app.secret_key = 'tu_clave_secreta_aqui'  # Cambia esto por algo seguro
+
 PRODUCTS_FILE = 'products.json'
 
 def load_products():
@@ -25,7 +27,7 @@ def login():
     if request.method == 'POST':
         usuario = request.form['usuario']
         clave = request.form['clave']
-        if usuario == 'admin' and clave == 'admin123':
+        if usuario == 'admin' and clave == 'psicologa2020':  # Cambia por credenciales seguras
             session['logged_in'] = True
             return redirect(url_for('admin'))
         else:
@@ -46,7 +48,8 @@ def admin():
         nombre = request.form['nombre']
         descripcion = request.form['descripcion']
         precio = request.form['precio']
-        imagen = request.form['imagen']
+        imagen = request.form['imagen']  # Por ahora es solo el nombre del archivo en static/images/productos/
+        
         productos = load_products()
         productos.append({
             'nombre': nombre,
@@ -62,4 +65,5 @@ def admin():
     return render_template('admin.html', productos=productos)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=10000)
+    app.run(debug=True)
+

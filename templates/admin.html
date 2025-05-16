@@ -1,15 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
-<head><meta charset="UTF-8"><title>Admin</title></head>
+<head>
+    <meta charset="UTF-8" />
+    <title>Panel Admin - Divina Revelación</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
 <body>
-  <h2>Panel Admin</h2>
-  <form method="POST">
-    <input name="nombre" placeholder="Nombre"><br>
-    <textarea name="descripcion" placeholder="Descripción"></textarea><br>
-    <input name="precio" placeholder="Precio"><br>
-    <input name="imagen" placeholder="Nombre de imagen (ej: producto.jpg)"><br>
-    <button type="submit">Agregar</button>
-  </form>
-  <a href="{{ url_for('logout') }}">Cerrar sesión</a>
+    <header>
+        <h2>Panel Administrativo</h2>
+        <a href="{{ url_for('logout') }}">Cerrar sesión</a>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="flashes">
+          {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" class="form-admin">
+        <label>Nombre del producto</label>
+        <input type="text" name="nombre" required>
+
+        <label>Descripción</label>
+        <textarea name="descripcion" rows="3" required></textarea>
+
+        <label>Precio</label>
+        <input type="text" name="precio" required>
+
+        <label>Nombre archivo imagen (en static/images/productos/)</label>
+        <input type="text" name="imagen" required>
+
+        <button type="submit">Agregar producto</button>
+    </form>
+
+    <h3>Productos actuales:</h3>
+    <ul>
+        {% for p in productos %}
+            <li>{{ p.nombre }} - {{ p.precio }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

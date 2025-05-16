@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "nombre": "Medalla Mamá",
+    "descripcion": "Con baño de oro, incluye topos y estuche especial",
+    "precio": "$28.000",
+    "imagen": "medalla_mama.png"
+  },
+  {
+    "nombre": "Corazón de Mamá",
+    "descripcion": "En acero inoxidable, incluye topos y estuche especial",
+    "precio": "$30.000",
+    "imagen": "corazon_mama.png"
+  },
+  {
+    "nombre": "Relicario",
+    "descripcion": "Con baño de oro, incluye topos y estuche especial",
+    "precio": "$30.000",
+    "imagen": "relicario.png"
+  }
+]
