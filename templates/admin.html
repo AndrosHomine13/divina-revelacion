@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><title>Admin</title></head>
+<body>
+  <h2>Panel Admin</h2>
+  <form method="POST">
+    <input name="nombre" placeholder="Nombre"><br>
+    <textarea name="descripcion" placeholder="Descripción"></textarea><br>
+    <input name="precio" placeholder="Precio"><br>
+    <input name="imagen" placeholder="Nombre de imagen (ej: producto.jpg)"><br>
+    <button type="submit">Agregar</button>
+  </form>
+  <a href="{{ url_for('logout') }}">Cerrar sesión</a>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Divina Revelación</title>
+</head>
+<body>
+  <h1>Catálogo de Productos</h1>
+  {% for producto in productos %}
+    <div>
+      <h2>{{ producto.nombre }}</h2>
+      <p>{{ producto.descripcion }}</p>
+      <strong>{{ producto.precio }}</strong><br>
+      <img src="{{ url_for('static', filename='images/productos/' + producto.imagen) }}" width="150">
+    </div>
+  {% endfor %}
+</body>
+</html>
