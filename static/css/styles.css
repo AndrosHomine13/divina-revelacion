@@ -1,8 +1,12 @@
 body {
     margin: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: #333;
     background-color: #fffdfb;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
 }
 
 header {
@@ -23,6 +27,11 @@ nav a {
     text-decoration: none;
     color: #a26b50;
     font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #8b543e;
 }
 
 .hero {
@@ -38,9 +47,15 @@ nav a {
     color: #a26b50;
 }
 
+.hero p {
+    font-size: 1.2em;
+    color: #6e4d3b;
+    margin-top: 1em;
+}
+
 .about, .catalog, .contacto {
     padding: 3em 2em;
-    max-width: 900px;
+    max-width: 1000px;
     margin: auto;
 }
 
@@ -54,7 +69,7 @@ h2 {
 .productos {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5em;
+    gap: 2em;
     margin-top: 2em;
 }
 
@@ -62,12 +77,47 @@ h2 {
     background: #fffaf5;
     padding: 1em;
     border: 1px solid #f0e0d6;
-    border-radius: 10px;
+    border-radius: 12px;
     text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.producto img {
+    max-width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 0.8em;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.producto img:hover {
+    transform: scale(1.05);
 }
 
 .producto h3 {
     color: #a26b50;
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+}
+
+.producto p {
+    color: #666;
+    font-size: 0.95em;
+    margin-bottom: 0.3em;
+}
+
+.precio {
+    color: #a26b50;
+    font-weight: bold;
+    font-size: 1.1em;
 }
 
 .btn {
@@ -88,23 +138,10 @@ h2 {
 
 footer {
     text-align: center;
-    padding: 1em;
+    padding: 1.5em;
     background-color: #fdf6f0;
     color: #a26b50;
     margin-top: 4em;
-}
-
-.producto img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 0.8em;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-}
-
-.producto img:hover {
-    transform: scale(1.05);
 }
 
 .login-container, .form-admin {
@@ -164,4 +201,100 @@ footer {
 
 .flashes li.error {
     color: red;
+}
+
+.contacto {
+    background-color: #fbeee6;
+    text-align: center;
+    padding: 3em 2em;
+    border-top: 2px solid #f0d8c8;
+    border-bottom: 2px solid #f0d8c8;
+}
+
+.contacto h2 {
+    font-size: 2.5em;
+    color: #a26b50;
+    margin-bottom: 0.5em;
+}
+
+.contacto-texto {
+    font-size: 1.2em;
+    color: #6e4d3b;
+    margin-bottom: 1.5em;
+}
+
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    background-color: #25D366;
+    color: white;
+    padding: 0.9em 1.5em;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.btn-whatsapp:hover {
+    background-color: #1ebc57;
+}
+
+.icono-wp {
+    width: 24px;
+    height: 24px;
+    margin-right: 0.6em;
+}
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    background-color: #25D366;
+    padding: 12px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-float img {
+    width: 24px;
+    height: 24px;
+}
+
+.whatsapp-contenedor {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+}
+
+.mensaje-wp {
+    margin-bottom: 60px; /* sube el mensaje sobre el botón */
+    background-color: #ffffff;
+    color: #444;
+    padding: 0.7em 1em;
+    border-radius: 10px;
+    font-size: 0.95em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    animation: fadeInRight 1s ease forwards;
+    opacity: 0;
+}
+
+
+
+@keyframes fadeInRight {
+    from {
+        transform: translateX(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }

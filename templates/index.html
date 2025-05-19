@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="images/png" href="{{ url_for('static', filename='images/logo.png') }}">
     <title>Divina Revelación</title>
     <link rel="stylesheet" href="../static/css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -20,6 +21,7 @@
     <section class="hero">
         <h1>Divina Revelación</h1>
         <p>Joyas y accesorios con estilo, elegancia y amor.</p>
+        <a href="#catalogo" class="btn">Ver Catálogo</a>
     </section>
 
     <section id="about" class="about">
@@ -31,28 +33,38 @@
     </section>
 
     <section id="catalogo" class="catalog">
-    <h2>Catálogo Destacado</h2>
-    <div class="productos">
-        {% for producto in productos %}
-            <div class="producto">
-                <img src="{{ url_for('static', filename='images/productos/' + producto.imagen) }}" alt="{{ producto.nombre }}">
-                <h3>{{ producto.nombre }}</h3>
-                <p>{{ producto.descripcion }}</p>
-                <span>{{ producto.precio }}</span>
-            </div>
-        {% endfor %}
-    </div>
+        <h2>Catálogo Destacado</h2>
+        <div class="productos">
+            {% for producto in productos %}
+                <div class="producto">
+                    <img src="{{ url_for('static', filename='images/productos/' + producto.imagen) }}" alt="{{ producto.nombre }}">
+                    <h3>{{ producto.nombre }}</h3>
+                    <p>{{ producto.descripcion }}</p>
+                    <span>{{ producto.precio }}</span>
+                </div>
+            {% endfor %}
+        </div>
 
-
-    <a href="{{ url_for('static', filename='catalogo.pdf') }}" class="btn" download>Descargar Catálogo Completo</a>
-</section>
+        <a href="{{ url_for('static', filename='catalogo.pdf') }}" class="btn" download>Descargar Catálogo Completo</a>
+    </section>
 
 
     <section id="contacto" class="contacto">
         <h2>Contacto</h2>
-        <p>¿Te interesa algún producto? ¡Escríbenos directamente por WhatsApp!</p>
-        <a href="https://wa.me/573123614448" class="btn" target="_blank">Contactar por WhatsApp</a>
+        <p class="contacto-texto">¿Te interesa algún producto? ¡Hablemos por WhatsApp!</p>
+
+        <a href="https://wa.me/573123614448" class="btn-whatsapp" target="_blank">
+            <img src="{{ url_for('static', filename='images/whatsapp-icon.png') }}" alt="WhatsApp" class="icono-wp">
+            Escríbenos por WhatsApp
+        </a>
     </section>
+
+    <div class="whatsapp-contenedor">
+        <div class="mensaje-wp">¡Contáctanos!</div>
+        <a href="https://wa.me/573123614448" class="whatsapp-float" target="_blank">
+            <img src="{{ url_for('static', filename='images/whatsapp-icon.png') }}" alt="WhatsApp">
+        </a>
+    </div>
 
     <footer>
         <p>&copy; 2025 Divina Revelación. Todos los derechos reservados.</p>
