@@ -275,7 +275,9 @@ footer {
 }
 
 .mensaje-wp {
-    margin-bottom: 60px; /* sube el mensaje sobre el botón */
+    position: absolute;
+    bottom: 70px; /* lo subimos arriba del botón */
+    right: 0;
     background-color: #ffffff;
     color: #444;
     padding: 0.7em 1em;
@@ -285,7 +287,6 @@ footer {
     animation: fadeInRight 1s ease forwards;
     opacity: 0;
 }
-
 
 
 @keyframes fadeInRight {
