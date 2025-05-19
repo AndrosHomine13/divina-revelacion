@@ -23,8 +23,9 @@ def save_products(products):
         json.dump(products, f, indent=4, ensure_ascii=False)
 
 @app.route('/')
-def home():
-    productos = load_products()
+def index():
+    with open('products.json', 'r', encoding='utf-8') as f:
+        productos = json.load(f)
     return render_template('index.html', productos=productos)
 
 @app.route('/admin', methods=['GET', 'POST'])

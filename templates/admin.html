@@ -96,7 +96,7 @@
       {% endif %}
     {% endwith %}
     
-    <h1>Subir nuevo producto destacado</h1>
+    <h1>Subir nuevo producto</h1>
     <form method="POST" class="form-admin" enctype="multipart/form-data">
         <label>Nombre del producto</label>
         <input type="text" name="nombre" required>
@@ -104,31 +104,13 @@
         <label>Descripción</label>
         <textarea name="descripcion" rows="3" required></textarea>
 
-        <label>Precio</label>
+        <label>Precio (sin punto)</label>
         <input type="text" name="precio" required>
 
         <label>Selecciona imagen</label>
         <input type="file" name="imagen" accept="image/*" required>
 
         <button type="submit">Agregar producto</button>
-    </form>
-
-    <h1>Subir nuevo catálogo en PDF</h1>
-    
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        <ul>
-          {% for msg in messages %}
-            <li>{{ msg }}</li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-    {% endwith %}
-    
-    <form method="POST" enctype="multipart/form-data" class="form-admin">
-      <label for="catalogo">Seleccionar catálogo (PDF):</label>
-      <input type="file" name="catalogo" accept="application/pdf" required />
-      <button type="submit">Subir catálogo</button>
     </form>
 
     <h3>Productos actuales:</h3>

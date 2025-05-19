@@ -21,7 +21,6 @@
     <section class="hero">
         <h1>Divina Revelación</h1>
         <p>Joyas y accesorios con estilo, elegancia y amor.</p>
-        <a href="#catalogo" class="btn">Ver Catálogo</a>
     </section>
 
     <section id="about" class="about">
@@ -32,22 +31,32 @@
         </p>
     </section>
 
-    <section id="catalogo" class="catalog">
-        <h2>Catálogo Destacado</h2>
-        <div class="productos">
-            {% for producto in productos %}
-                <div class="producto">
-                    <img src="{{ url_for('static', filename='images/productos/' + producto.imagen) }}" alt="{{ producto.nombre }}">
-                    <h3>{{ producto.nombre }}</h3>
-                    <p>{{ producto.descripcion }}</p>
-                    <span>{{ producto.precio }}</span>
-                </div>
-            {% endfor %}
-        </div>
+    <h1 id="catalogo">Catálogo de Productos</h1>
+    <div id="productos">
+        {% for producto in productos %}
+            <div class="producto">
+                <img src="{{ url_for('static', filename='images/productos/' ~ producto.imagen) }}" alt="{{ producto.nombre }}">
+                <h3>{{ producto.nombre }}</h3>
+                <p>{{ producto.descripcion }}</p>
+                <p>Precio: ${{ producto.precio }}</p>
+                <button class="btn" onclick="agregarAlCarrito('{{ producto.nombre }}', {{ producto.precio }})">Agregar al carrito</button>
+            </div>
+        {% endfor %}
+    </div>
+    
+    <div id="toast" class="toast"></div>
 
-        <a href="{{ url_for('static', filename='catalogo.pdf') }}" class="btn" download>Descargar Catálogo Completo</a>
-    </section>
+    <!-- Botón para abrir sidebar -->
+    <button class="btn btn-ver-carrito" onclick="abrirSidebar()">
+        🛒 Ver Carrito (<span id="contador-carrito">0</span>)
+    </button>
 
+    <button class="btn-enviar-pedido" onclick="enviarPorWhatsApp()">
+        <img src="{{ url_for('static', filename='images/whatsapp-icon.png') }}" alt="WhatsApp" class="icono-wp">
+        Enviar pedido por WhatsApp
+    </button>
+
+    <script src="{{ url_for('static', filename='js/catalogo.js') }}"></script>
 
     <section id="contacto" class="contacto">
         <h2>Contacto</h2>
@@ -64,6 +73,29 @@
         <a href="https://wa.me/573123614448" class="whatsapp-float" target="_blank">
             <img src="{{ url_for('static', filename='images/whatsapp-icon.png') }}" alt="WhatsApp">
         </a>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal-carrito" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar" onclick="cerrarCarrito()">&times;</span>
+            <h2>Carrito de Compras</h2>
+            <div id="modal-carrito-contenedor"></div>
+            <button class="btn-whatsapp" onclick="enviarPorWhatsApp()">
+                <img src="{{ url_for('static', filename='images/whatsapp-icon.png') }}" alt="WhatsApp" class="icono-wp">
+                Enviar pedido por WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar-carrito" class="sidebar-carrito">
+        <div class="sidebar-contenido">
+            <span class="cerrar-btn" onclick="cerrarSidebar()">&times;</span>
+            <h2>Tu Carrito</h2>
+            <div id="sidebar-carrito-contenedor"></div>
+            <button class="btn-enviar-pedido" onclick="enviarPorWhatsApp()">Enviar pedido por WhatsApp</button>
+        </div>
     </div>
 
     <footer>
