@@ -1,54 +1,54 @@
 body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    color: #333;
-    background-color: #fffdfb;
+    margin: 0; /* Sin margen externo */
+    font-family: 'Poppins', sans-serif; /* Fuente principal */
+    color: #333; /* Color de texto oscuro */
+    background-color: #fffdfb; /* Fondo blanco con un tono crema */
 }
 
 h1, h2, h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', serif; /* Fuente serif para títulos */
 }
 
 h1 {
-    font-size: 2.5em;
-    text-align: center;
-    color: #a26b50;
+    font-size: 2.5em; /* Tamaño grande */
+    text-align: center; /* Centrado horizontal */
+    color: #a26b50; /* Color marrón claro */
     margin-top: 1em;
     margin-bottom: 0.5em;
 }
 
 header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: #fdf6f0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1em 2em;
-    border-bottom: 1px solid #e0cfc2;
+    position: sticky; /* Se mantiene visible al hacer scroll */
+    top: 0; /* Pegado arriba */
+    z-index: 1000; /* Sobre otros elementos */
+    background-color: #fdf6f0; /* Color de fondo claro */
+    display: flex; /* Layout flexible */
+    align-items: center; /* Centrado vertical */
+    justify-content: space-between; /* Separar logo y navegación */
+    padding: 1em 2em; /* Espaciado interno */
+    border-bottom: 1px solid #e0cfc2; /* Línea inferior sutil */
 }
 
 .logo {
-    height: 60px;
+    height: 60px; /* Altura fija */
 }
 
 nav a {
-    margin: 0 1em;
-    text-decoration: none;
-    color: #a26b50;
-    font-weight: bold;
-    transition: color 0.3s ease;
+    margin: 0 1em; /* Separación horizontal */
+    text-decoration: none; /* Sin subrayado */
+    color: #a26b50; /* Color marrón */
+    font-weight: bold; /* Negrita */
+    transition: color 0.3s ease; /* Animación suave al cambiar color */
 }
 
 nav a:hover {
-    color: #8b543e;
+    color: #8b543e; /* Marrón más oscuro */
 }
 
 .hero {
-    text-align: center;
-    padding: 4em 2em;
-    background: linear-gradient(to bottom right, #fbe7e0, #fffdfb);
+    text-align: center; /* Centrado del contenido */
+    padding: 4em 2em; /* Espaciado amplio */
+    background: linear-gradient(to bottom right, #fbe7e0, #fffdfb); /* Degradado suave */
 }
 
 .hero h1 {
@@ -60,14 +60,15 @@ nav a:hover {
 
 .hero p {
     font-size: 1.2em;
-    color: #6e4d3b;
+    color: #6e4d3b; /* Marrón medio */
     margin-top: 1em;
 }
 
+/* Secciones comunes con padding y ancho máximo */
 .about, .catalog, .contacto {
     padding: 3em 2em;
     max-width: 1000px;
-    margin: auto;
+    margin: auto; /* Centrado horizontal */
 }
 
 h2 {
@@ -79,19 +80,19 @@ h2 {
 
 #productos {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2em;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Responsive */
+    gap: 2em; /* Espacio entre productos */
     margin-top: 2em;
 }
 
 .producto {
-    background: #fffaf5;
+    background: #fffaf5; /* Fondo crema claro */
     padding: 1em;
-    border: 1px solid #f0e0d6;
-    border-radius: 12px;
+    border: 1px solid #f0e0d6; /* Borde suave */
+    border-radius: 12px; /* Bordes redondeados */
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Sombra ligera */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transición suave */
 }
 
 .producto:hover {
@@ -102,13 +103,14 @@ h2 {
 .producto img {
     max-width: 100%;
     height: 200px;
-    object-fit: cover;
+    object-fit: cover; /* Mantener proporción y recortar */
     border-radius: 10px;
     margin-bottom: 0.8em;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
 }
 
+/* Zoom en la imagen al pasar el cursor */
 .producto img:hover {
     transform: scale(1.05);
 }
@@ -171,7 +173,6 @@ h2 {
     background-color: #8b543e;
 }
 
-/* Modal base */
 .modal {
     display: none;
     position: fixed;
@@ -181,10 +182,9 @@ h2 {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.5); /* Fondo semitransparente */
 }
 
-/* Contenido del modal */
 .modal-contenido {
     background-color: #fffaf5;
     margin: 5% auto;
@@ -197,7 +197,6 @@ h2 {
     position: relative;
 }
 
-/* Botón de cerrar */
 .cerrar {
     color: #aaa;
     position: absolute;
@@ -211,7 +210,6 @@ h2 {
     color: #000;
 }
 
-/* Carrito contenido */
 #carrito-contenido ul {
     list-style: none;
     padding-left: 0;
@@ -223,7 +221,7 @@ h2 {
 
 #carrito-contenido button {
     margin-left: 1em;
-    background: #d9534f;
+    background: #d9534f; /* Rojo para eliminar */
     color: white;
     border: none;
     border-radius: 4px;
@@ -234,17 +232,17 @@ h2 {
     background: #c9302c;
 }
 
-/* Sidebar carrito */
+/* Sidebar lateral para el carrito */
 .sidebar-carrito {
   height: 100%;
-  width: 0;
+  width: 0; /* Oculto por defecto */
   position: fixed;
   top: 0;
   right: 0;
   background-color: #fffdfb;
   box-shadow: -4px 0 15px rgba(0,0,0,0.2);
   overflow-x: hidden;
-  transition: 0.4s;
+  transition: 0.4s; /* Animación apertura */
   z-index: 1000;
   padding-top: 2em;
 }
@@ -260,11 +258,10 @@ h2 {
 .cerrar-btn {
   font-size: 2em;
   cursor: pointer;
-  align-self: flex-end;
+  align-self: flex-end; /* Se alinea a la derecha */
   color: #a26b50;
 }
 
-/* Botón para abrir carrito */
 .btn-ver-carrito {
     border: none;
     outline: none;
@@ -284,11 +281,10 @@ h2 {
   background-color: #8b543e;
 }
 
-/* Items del carrito */
 .item-carrito {
   display: flex;
-  justify-content: space-between; /* separa texto y botón */
-  align-items: center; /* centra verticalmente */
+  justify-content: space-between; /* Separar contenido */
+  align-items: center; /* Centrado vertical */
   padding: 0.3em 0;
   border-bottom: 1px solid #ddd;
 }
@@ -310,9 +306,9 @@ h2 {
 }
 
 .toast {
-  visibility: hidden; /* Oculto por defecto */
+  visibility: hidden; /* Oculto inicialmente */
   min-width: 250px;
-  margin-left: -125px; /* Para centrar */
+  margin-left: -125px; /* Centrar horizontalmente */
   background-color: #a26b50;
   color: white;
   text-align: center;
@@ -475,7 +471,7 @@ footer {
 
 .mensaje-wp {
     position: absolute;
-    bottom: 70px; /* lo subimos arriba del botón */
+    bottom: 70px; /* Subido sobre el botón */
     right: 0;
     background-color: #ffffff;
     color: #444;
@@ -487,7 +483,7 @@ footer {
     opacity: 0;
 }
 
-
+/* Animación para el mensaje emergente */
 @keyframes fadeInRight {
     from {
         transform: translateX(30px);
@@ -497,4 +493,30 @@ footer {
         transform: translateX(0);
         opacity: 1;
     }
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 768px) {
+  header {
+    flex-wrap: wrap; /* Permite que se envuelvan los elementos */
+    padding: 0.8em 1em; /* Reduce padding */
+  }
+
+  .logo {
+    height: 50px; /* Logo más pequeño */
+    margin-right: auto; /* Empuja nav a la derecha */
+  }
+
+  nav {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end; /* Alinea enlaces a la derecha */
+    gap: 0.8em; /* Separación entre enlaces */
+    flex-wrap: wrap; /* Se envuelven si hace falta */
+  }
+
+  nav a {
+    font-size: 0.9em; /* Texto un poco más pequeño */
+    margin: 0 0.4em;
+  }
 }

@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Ícono de la pestaña del navegador -->
     <link rel="icon" type="images/png" href="{{ url_for('static', filename='images/logo.png') }}">
+
     <title>Divina Revelación</title>
     <link rel="stylesheet" href="../static/css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet">
 </head>
+
 <body>
+    <!-- Encabezado del sitio con logo y navegación -->
     <header>
         <img src="../static/images/logo.png" alt="Logo Divina Revelación" class="logo">
         <nav>
@@ -18,11 +23,13 @@
         </nav>
     </header>
 
+    <!-- Sección principal con mensaje de bienvenida -->
     <section class="hero">
         <h1>Divina Revelación</h1>
         <p>Joyas y accesorios con estilo, elegancia y amor.</p>
     </section>
 
+    <!-- Sección "Sobre nosotros" -->
     <section id="about" class="about">
         <h2>Sobre nosotros</h2>
         <p>
@@ -31,7 +38,10 @@
         </p>
     </section>
 
+    <!-- Título del catálogo -->
     <h1 id="catalogo">Catálogo de Productos</h1>
+
+    <!-- Contenedor de productos -->
     <div id="productos">
         {% for producto in productos %}
             <div class="producto">
@@ -39,18 +49,21 @@
                 <h3>{{ producto.nombre }}</h3>
                 <p>{{ producto.descripcion }}</p>
                 <p>Precio: ${{ producto.precio }}</p>
+                <!-- Botón para agregar al carrito -->
                 <button class="btn" onclick="agregarAlCarrito('{{ producto.nombre }}', {{ producto.precio }})">Agregar al carrito</button>
             </div>
         {% endfor %}
     </div>
-    
+
+    <!-- Toast: mensaje flotante para notificaciones -->
     <div id="toast" class="toast"></div>
 
-    <!-- Botón para abrir sidebar -->
+    <!-- Botón flotante para ver el carrito (abre el sidebar) -->
     <button class="btn btn-ver-carrito" onclick="abrirSidebar()">
         🛒 Ver Carrito (<span id="contador-carrito">0</span>)
     </button>
 
+    <!-- Botón flotante para enviar el pedido por WhatsApp -->
     <button class="btn-enviar-pedido" onclick="enviarPorWhatsApp()">
         <img src="{{ url_for('static', filename='images/whatsapp-icon.png') }}" alt="WhatsApp" class="icono-wp">
         Enviar pedido por WhatsApp
@@ -58,16 +71,19 @@
 
     <script src="{{ url_for('static', filename='js/catalogo.js') }}"></script>
 
+    <!-- Sección de contacto -->
     <section id="contacto" class="contacto">
         <h2>Contacto</h2>
         <p class="contacto-texto">¿Te interesa algún producto? ¡Hablemos por WhatsApp!</p>
 
+        <!-- Enlace a WhatsApp directo -->
         <a href="https://wa.me/573123614448" class="btn-whatsapp" target="_blank">
             <img src="{{ url_for('static', filename='images/whatsapp-icon.png') }}" alt="WhatsApp" class="icono-wp">
             Escríbenos por WhatsApp
         </a>
     </section>
 
+    <!-- Botón flotante de WhatsApp fijo en la pantalla -->
     <div class="whatsapp-contenedor">
         <div class="mensaje-wp">¡Contáctanos!</div>
         <a href="https://wa.me/573123614448" class="whatsapp-float" target="_blank">
@@ -75,12 +91,15 @@
         </a>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal del carrito (versión centrada) -->
     <div id="modal-carrito" class="modal">
         <div class="modal-contenido">
+            <!-- Botón de cierre -->
             <span class="cerrar" onclick="cerrarCarrito()">&times;</span>
             <h2>Carrito de Compras</h2>
+            <!-- Contenedor de productos dentro del modal -->
             <div id="modal-carrito-contenedor"></div>
+            <!-- Botón para enviar por WhatsApp -->
             <button class="btn-whatsapp" onclick="enviarPorWhatsApp()">
                 <img src="{{ url_for('static', filename='images/whatsapp-icon.png') }}" alt="WhatsApp" class="icono-wp">
                 Enviar pedido por WhatsApp
@@ -88,12 +107,17 @@
         </div>
     </div>
 
-    <!-- Sidebar -->
+    <!-- Sidebar del carrito -->
     <div id="sidebar-carrito" class="sidebar-carrito">
         <div class="sidebar-contenido">
+            <!-- Botón para cerrar el sidebar -->
             <span class="cerrar-btn" onclick="cerrarSidebar()">&times;</span>
             <h2>Tu Carrito</h2>
-            <div id="sidebar-carrito-contenedor"></div>
+            <!-- Contenedor dinámico del carrito en el sidebar -->
+            <div id="sidebar-carrito-contenedor">
+                <p id="mensaje-vacio">El carrito está vacío.</p>
+            </div>
+            <!-- Botón para enviar pedido por WhatsApp -->
             <button class="btn-enviar-pedido" onclick="enviarPorWhatsApp()">Enviar pedido por WhatsApp</button>
         </div>
     </div>
