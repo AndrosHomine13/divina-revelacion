@@ -10,6 +10,7 @@
     <title>Divina Revelación</title>
     <link rel="stylesheet" href="../static/css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -17,9 +18,9 @@
     <header>
         <img src="../static/images/logo.png" alt="Logo Divina Revelación" class="logo">
         <nav>
-            <a href="#about">Nosotros</a>
-            <a href="#catalogo">Catálogo</a>
-            <a href="#contacto">Contacto</a>
+            <a href="#about" class="nav-link">Nosotros</a>
+            <a href="#catalogo" class="nav-link">Catálogo</a>
+            <a href="#contacto" class="nav-link">Contacto</a>
         </nav>
     </header>
 
@@ -74,13 +75,31 @@
     <!-- Sección de contacto -->
     <section id="contacto" class="contacto">
         <h2>Contacto</h2>
-        <p class="contacto-texto">¿Te interesa algún producto? ¡Hablemos por WhatsApp!</p>
+        <p class="contacto-texto">¿Te gustó algo? Escríbeme por WhatsApp o sígueme en redes para ver más.</p>
 
-        <!-- Enlace a WhatsApp directo -->
-        <a href="https://wa.me/573123614448" class="btn-whatsapp" target="_blank">
-            <img src="{{ url_for('static', filename='images/whatsapp-icon.png') }}" alt="WhatsApp" class="icono-wp">
-            Escríbenos por WhatsApp
-        </a>
+        <!-- Enlace a redes directo -->
+         <div class="container">
+            <a href="https://www.facebook.com/dianapatricia.rodriguezhernandez.50" target="_blank" class="icon facebook">
+                <div class="tooltip">Facebook</div>
+                <span>
+                    <i class="fa-brands fa-facebook"></i>
+                </span>
+            </a>
+            
+            <a href="https://www.instagram.com/divina1revelacion" target="_blank" class="icon instagram">
+                <div class="tooltip">Instagram</div>
+                <span>
+                    <i class="fa-brands fa-instagram"></i>
+                </span>
+            </a>
+
+            <a href="https://wa.me/573123614448" target="_blank" class="icon whatsapp">
+                <div class="tooltip">WhatsApp</div>
+                <span>
+                    <i class="fa-brands fa-whatsapp"></i>
+                </span>
+            </a>
+         </div>
     </section>
 
     <!-- Botón flotante de WhatsApp fijo en la pantalla -->

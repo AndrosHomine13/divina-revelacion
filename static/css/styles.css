@@ -33,15 +33,21 @@ header {
     height: 60px; /* Altura fija */
 }
 
-nav a {
-    margin: 0 1em; /* Separación horizontal */
-    text-decoration: none; /* Sin subrayado */
-    color: #a26b50; /* Color marrón */
-    font-weight: bold; /* Negrita */
-    transition: color 0.3s ease; /* Animación suave al cambiar color */
+nav .nav-link {
+    margin: 0 1em;                 /* Separación horizontal */
+    text-decoration: none;        /* Sin subrayado */
+    color: #a26b50;               /* Marrón claro */
+    font-weight: bold;            /* Negrita */
+    font-size: 1em;
+    transition: color 0.3s ease;  /* Suavidad al pasar mouse */
 }
 
-nav a:hover {
+nav .nav-link {
+    color: #a26b50 !important;
+    text-decoration: none !important;
+}
+
+nav .nav-link:hover {
     color: #8b543e; /* Marrón más oscuro */
 }
 
@@ -303,6 +309,107 @@ h2 {
 
 .item-carrito button:hover {
   color: #8b543e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'roboto';
+}
+
+.container {
+    display: inline-flex;
+}
+
+.container .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    z-index: 100;
+    margin: 0 20px;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    text-decoration: none; /* Quita el subrayado en enlaces */
+    color: inherit;        /* Mantiene el color del ícono */
+    cursor: pointer;       /* Muestra la manito al pasar el mouse */
+}
+
+.container .icon span {
+    position: relative;
+    height: 60px;
+    width: 60px;
+    display: block;
+    background-color: #fff9f6;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.container .icon span i {
+    font-size: 25px;
+    line-height: 60px;
+}
+
+.container .icon:hover span i {
+    color: #fff9f6;
+}
+
+.container .icon .tooltip {
+    background-color: #fff9f6;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    color: #fff9f6;
+    font-size: 20px;
+    padding: 10px 10px;
+    border-radius: 25px;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.container .icon:hover .tooltip {
+    top: -70px;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.container .icon .tooltip::before {
+    position: absolute;
+    content: '';
+    height: 15px;
+    width: 15px;
+    bottom: -8px;
+    background-color: #fff9f6;
+    left: 50%;
+    transform: translate(-50%) rotate(45deg);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.container .icon:hover span,
+.container .icon:hover .tooltip {
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
+}
+
+.container .facebook:hover span,
+.container .facebook:hover .tooltip,
+.container .facebook:hover .tooltip::before {
+    background-color: #3b5993;
+}
+
+.container .instagram:hover span,
+.container .instagram:hover .tooltip,
+.container .instagram:hover .tooltip::before {
+    background-color: #ee076f;
+}
+
+.container .whatsapp:hover span,
+.container .whatsapp:hover .tooltip,
+.container .whatsapp:hover .tooltip::before {
+    background-color: #25d366;
 }
 
 .toast {
