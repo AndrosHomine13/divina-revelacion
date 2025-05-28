@@ -1,6 +1,46 @@
 // Variable global para almacenar los productos en el carrito
 let carrito = [];
 
+// Carga los distribuidores desde un archivo JSON
+async function cargarDistribuidores() {
+  try {
+    const response = await fetch('/static/distribuidores.json'); // Asegúrate de que esta ruta sea correcta
+    if (!response.ok) throw new Error('No se pudo cargar el archivo de distribuidores');
+
+    const distribuidores = await response.json(); 
+
+    const select = document.getElementById('lista-distribuidores');
+    select.innerHTML = ''; // Limpia opciones previas
+
+    distribuidores.forEach(dist => {
+      const option = document.createElement('option');
+      option.value = dist.nombre;
+      option.textContent = dist.nombre;
+      select.appendChild(option);
+    });
+
+    // Actualizar el carrito si cambia el distribuidor
+    select.addEventListener('change', actualizarCarritoUI);
+  } catch (error) {
+    console.error('Error cargando distribuidores:', error);
+  }
+}
+
+// Muestra u oculta el selector de distribuidores
+function toggleDistribuidores() {
+  const tipoCompra = document.getElementById('tipo-compra').value;
+  const contenedorDistribuidor = document.getElementById('seleccion-distribuidor');
+
+  if (tipoCompra === 'distribuidor') {
+    contenedorDistribuidor.style.display = 'block';
+    cargarDistribuidores(); // Cargar distribuidores solo si se necesita
+  } else {
+    contenedorDistribuidor.style.display = 'none';
+  }
+
+  actualizarCarritoUI(); // Refresca el carrito
+}
+
 // Muestra una notificación breve en pantalla
 function mostrarToast(mensaje) {
   const toast = document.getElementById('toast');
@@ -92,6 +132,22 @@ function actualizarCarritoUI() {
   totalDiv.textContent = `Total: $${total}`;
 
   contenedorSidebar.appendChild(totalDiv);
+
+  // Muestra el distribuidor seleccionado debajo del total
+  const selectDistribuidor = document.getElementById('lista-distribuidores');
+  let nombreDistribuidor = 'Ninguno';
+  if (selectDistribuidor && selectDistribuidor.options.length > 0) {
+    nombreDistribuidor = selectDistribuidor.options[selectDistribuidor.selectedIndex].text;
+  }
+
+  const distribuidorDiv = document.createElement('div');
+  distribuidorDiv.className = 'distribuidor-carrito';
+  distribuidorDiv.style.marginTop = '8px';
+  distribuidorDiv.style.fontWeight = 'bold';
+  distribuidorDiv.style.color = '#a26b50';
+  distribuidorDiv.textContent = `Distribuidor: ${nombreDistribuidor}`;
+
+  contenedorSidebar.appendChild(distribuidorDiv);
 }
 
 // Elimina un producto del carrito por su índice
@@ -107,52 +163,12 @@ function actualizarContador() {
   document.getElementById('contador-carrito').textContent = carrito.length;
 }
 
-// Envia el pedido a WhatsApp con el resumen del carrito
-function enviarPorWhatsApp() {
-  if (carrito.length === 0) {
-    alert("El carrito está vacío.");
-    return;
-  }
-
-  let mensaje = "Hola, quiero estos productos:\n";
-  let total = 0;
-
-  carrito.forEach(p => {
-    mensaje += `- ${p.nombre} ($${p.precio})\n`;
-    total += p.precio;
-  });
-
-  mensaje += `\nTotal: $${total}`;
-
-  const telefono = "573123614448"; // Número de destino en WhatsApp
-  const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
-  window.open(url); // Abre WhatsApp en una nueva pestaña
-}
-
-// Abre el sidebar del carrito
-function abrirSidebar() {
-  document.getElementById("sidebar-carrito").style.width = "300px";
-}
-
-// Cierra el sidebar del carrito
-function cerrarSidebar() {
-  document.getElementById("sidebar-carrito").style.width = "0";
-}
-
-// Cierra el sidebar si el usuario hace clic fuera de él
-window.onclick = function(event) {
-  const sidebar = document.getElementById("sidebar-carrito");
-  if (event.target == sidebar) {
-    cerrarSidebar();
-  }
-};
-
-// Guarda el carrito en localStorage
+// Guardar carrito en localStorage
 function guardarCarritoEnLocalStorage() {
   localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
-// Carga el carrito desde localStorage al iniciar la página
+// Cargar carrito desde localStorage
 function cargarCarritoDesdeLocalStorage() {
   const carritoGuardado = localStorage.getItem('carrito');
   if (carritoGuardado) {
@@ -160,9 +176,26 @@ function cargarCarritoDesdeLocalStorage() {
   }
 }
 
-// Ejecuta cuando la página ha terminado de cargar
-document.addEventListener('DOMContentLoaded', () => {
-  cargarCarritoDesdeLocalStorage(); // Recupera carrito anterior si existe
-  actualizarCarritoUI();           // Muestra contenido
-  actualizarContador();            // Refresca contador
-});
+function abrirModalCarrito() {
+  document.getElementById('modal-carrito').style.display = 'block';
+}
+
+function cerrarModalCarrito() {
+  document.getElementById('modal-carrito').style.display = 'none';
+}
+
+function abrirSidebar() {
+  document.getElementById('sidebar-carrito').classList.add('abierto');
+}
+
+function cerrarSidebar() {
+  document.getElementById('sidebar-carrito').classList.remove('abierto');
+}
+
+// Al cargar la página, cargar carrito y distribuidores, actualizar UI
+window.onload = function() {
+  cargarCarritoDesdeLocalStorage();
+  cargarDistribuidores();
+  actualizarCarritoUI();
+  actualizarContador();
+};

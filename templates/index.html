@@ -64,6 +64,19 @@
         🛒 Ver Carrito (<span id="contador-carrito">0</span>)
     </button>
 
+    <div class="selector-compra" style="margin: 20px 0; text-align: center;">
+        <label for="tipo-compra"><strong>¿Cómo deseas comprar?</strong></label>
+        <select id="tipo-compra" onchange="toggleDistribuidores()" style="margin-left: 10px;">
+            <option value="directa">Compra directa</option>
+            <option value="distribuidor">Con distribuidor</option>
+        </select>
+    </div>
+
+    <div id="seleccion-distribuidor" style="display: none; margin-bottom: 20px; text-align: center;">
+        <label for="lista-distribuidores"><strong>Selecciona un distribuidor:</strong></label>
+        <select id="lista-distribuidores" style="margin-left: 10px;"></select>
+    </div>
+
     <!-- Botón flotante para enviar el pedido por WhatsApp -->
     <button class="btn-enviar-pedido" onclick="enviarPorWhatsApp()">
         <img src="{{ url_for('static', filename='images/whatsapp-icon.png') }}" alt="WhatsApp" class="icono-wp">
@@ -136,6 +149,15 @@
             <div id="sidebar-carrito-contenedor">
                 <p id="mensaje-vacio">El carrito está vacío.</p>
             </div>
+        
+        <!-- Aquí agregamos el total y distribuidor -->
+        <div id="sidebar-total">
+            <strong>Total: </strong><span id="total-monto">$0</span>
+        </div>
+        <div id="sidebar-distribuidor" style="margin-top: 10px; font-weight: bold; color: #a26b50;">
+            Distribuidor: <span id="nombre-distribuidor">Ninguno</span>
+        </div>
+
             <!-- Botón para enviar pedido por WhatsApp -->
             <button class="btn-enviar-pedido" onclick="enviarPorWhatsApp()">Enviar pedido por WhatsApp</button>
         </div>

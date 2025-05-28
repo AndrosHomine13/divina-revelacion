@@ -627,3 +627,57 @@ footer {
     margin: 0 0.4em;
   }
 }
+
+.selector-compra {
+    margin: 20px 0;
+    text-align: center;
+    font-weight: bold;
+    color: #a26b50;
+    font-size: 1.1em;
+}
+
+#tipo-compra {
+    margin-left: 10px;
+    padding: 0.4em 0.8em;
+    font-size: 1em;
+    border: 1px solid #f0e0d6;
+    border-radius: 8px;
+    background-color: #fffaf5;
+    color: #6e4d3b;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#tipo-compra:hover,
+#tipo-compra:focus {
+    border-color: #a26b50;
+    box-shadow: 0 0 8px rgba(162, 107, 80, 0.5);
+    outline: none;
+}
+
+#seleccion-distribuidor {
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: normal;
+}
+
+#lista-distribuidores {
+    margin-left: 10px;
+    padding: 0.4em 0.8em;
+    font-size: 1em;
+    border: 1px solid #f0e0d6;
+    border-radius: 8px;
+    background-color: #fffaf5;
+    color: #6e4d3b;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    min-width: 200px;
+}
+
+#lista-distribuidores:hover,
+#lista-distribuidores:focus {
+    border-color: #a26b50;
+    box-shadow: 0 0 8px rgba(162, 107, 80, 0.5);
+    outline: none;
+}
+
