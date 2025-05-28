@@ -241,16 +241,20 @@ h2 {
 /* Sidebar lateral para el carrito */
 .sidebar-carrito {
   height: 100%;
-  width: 0; /* Oculto por defecto */
+  width: 0; /* oculto */
   position: fixed;
   top: 0;
   right: 0;
   background-color: #fffdfb;
   box-shadow: -4px 0 15px rgba(0,0,0,0.2);
   overflow-x: hidden;
-  transition: 0.4s; /* Animación apertura */
+  transition: width 0.4s; /* animación solo de width */
   z-index: 1000;
   padding-top: 2em;
+}
+
+.sidebar-carrito.abierto {
+  width: 300px; /* ancho visible cuando está abierto */
 }
 
 /* Contenido dentro del sidebar */

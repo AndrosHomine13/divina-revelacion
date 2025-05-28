@@ -62,16 +62,31 @@ function agregarAlCarrito(nombre, precio) {
   actualizarContador();             // Actualiza el contador del icono
 }
 
+function abrirModalCarrito() {
+  document.getElementById('modal-carrito').style.display = 'block';
+}
+
+function cerrarModalCarrito() {
+  document.getElementById('modal-carrito').style.display = 'none';
+}
+
+function abrirSidebar() {
+  document.getElementById('sidebar-carrito').classList.add('abierto');
+}
+
+function cerrarSidebar() {
+  document.getElementById('sidebar-carrito').classList.remove('abierto');
+}
+
 // Actualiza la interfaz del carrito (modal y sidebar)
 function actualizarCarritoUI() {
   const contenedorModal = document.getElementById('modal-carrito-contenedor');
   const contenedorSidebar = document.getElementById('sidebar-carrito-contenedor');
 
-  // Limpia el contenido anterior
+  // Limpia solo los productos, no total ni distribuidor
   contenedorModal.innerHTML = '';
   contenedorSidebar.innerHTML = '';
 
-  // Si el carrito está vacío, mostrar el mensaje en ambos contenedores
   if (carrito.length === 0) {
     const mensajeVacioModal = document.createElement('p');
     mensajeVacioModal.textContent = 'El carrito está vacío.';
@@ -81,22 +96,23 @@ function actualizarCarritoUI() {
 
     contenedorModal.appendChild(mensajeVacioModal);
     contenedorSidebar.appendChild(mensajeVacioSidebar);
+
+    // También actualiza total y distribuidor para carrito vacío
+    document.getElementById('total-monto').textContent = '$0';
+    document.getElementById('nombre-distribuidor').textContent = 'Ninguno';
+
     return;
   }
 
-  let total = 0; // Acumulador para el total
+  let total = 0;
 
-  // Recorre los productos del carrito
   carrito.forEach((item, indice) => {
-    // Crea el elemento del producto para el modal
+    // Crea elementos para modal
     const divModal = document.createElement('div');
     divModal.className = 'item-carrito';
     divModal.textContent = `${item.nombre} - $${item.precio}`;
 
-    // Clona para usar en el sidebar
-    const divSidebar = divModal.cloneNode(true);
-
-    // Crea botón de eliminar para el modal
+    // Botón eliminar para modal
     const btnEliminarModal = document.createElement('button');
     btnEliminarModal.textContent = '✖';
     btnEliminarModal.style.marginLeft = '10px';
@@ -105,49 +121,31 @@ function actualizarCarritoUI() {
     btnEliminarModal.style.background = 'transparent';
     btnEliminarModal.style.color = '#a26b50';
     btnEliminarModal.style.fontWeight = 'bold';
-    btnEliminarModal.onclick = () => eliminarDelCarrito(indice); // Elimina por índice
+    btnEliminarModal.onclick = () => eliminarDelCarrito(indice);
 
-    // Agrega el botón al producto en el modal
     divModal.appendChild(btnEliminarModal);
-
-    // Botón eliminar para el sidebar (clonado pero con evento propio)
-    const btnEliminarSidebar = btnEliminarModal.cloneNode(true);
-    btnEliminarSidebar.onclick = () => eliminarDelCarrito(indice);
-    divSidebar.appendChild(btnEliminarSidebar);
-
-    // Agrega los productos al DOM
     contenedorModal.appendChild(divModal);
+
+    // Para sidebar, clonamos el divModal
+    const divSidebar = divModal.cloneNode(true);
+    // Ajustamos evento eliminar para el sidebar
+    const btnEliminarSidebar = divSidebar.querySelector('button');
+    btnEliminarSidebar.onclick = () => eliminarDelCarrito(indice);
+
     contenedorSidebar.appendChild(divSidebar);
 
-    total += item.precio; // Suma el precio al total
+    total += item.precio;
   });
 
-  // Muestra el total de la compra en el sidebar
-  const totalDiv = document.createElement('div');
-  totalDiv.className = 'total-carrito';
-  totalDiv.style.marginTop = '15px';
-  totalDiv.style.fontWeight = 'bold';
-  totalDiv.style.borderTop = '1px solid #ccc';
-  totalDiv.style.paddingTop = '10px';
-  totalDiv.textContent = `Total: $${total}`;
+  // Actualiza el total y distribuidor en los divs específicos (NO agregar nodos nuevos)
+  document.getElementById('total-monto').textContent = `$${total}`;
 
-  contenedorSidebar.appendChild(totalDiv);
-
-  // Muestra el distribuidor seleccionado debajo del total
   const selectDistribuidor = document.getElementById('lista-distribuidores');
   let nombreDistribuidor = 'Ninguno';
   if (selectDistribuidor && selectDistribuidor.options.length > 0) {
     nombreDistribuidor = selectDistribuidor.options[selectDistribuidor.selectedIndex].text;
   }
-
-  const distribuidorDiv = document.createElement('div');
-  distribuidorDiv.className = 'distribuidor-carrito';
-  distribuidorDiv.style.marginTop = '8px';
-  distribuidorDiv.style.fontWeight = 'bold';
-  distribuidorDiv.style.color = '#a26b50';
-  distribuidorDiv.textContent = `Distribuidor: ${nombreDistribuidor}`;
-
-  contenedorSidebar.appendChild(distribuidorDiv);
+  document.getElementById('nombre-distribuidor').textContent = nombreDistribuidor;
 }
 
 // Elimina un producto del carrito por su índice
@@ -176,21 +174,40 @@ function cargarCarritoDesdeLocalStorage() {
   }
 }
 
-function abrirModalCarrito() {
-  document.getElementById('modal-carrito').style.display = 'block';
+function enviarPorWhatsApp() {
+  if (carrito.length === 0) {
+    alert("El carrito está vacío. Agrega productos antes de enviar el pedido.");
+    return;
+  }
+
+  const numeroTelefono = "573123614448";
+  
+  // Construir mensaje con productos y total
+  let mensaje = "Hola, quiero hacer el siguiente pedido:%0A";
+
+  carrito.forEach(item => {
+    mensaje += `- ${item.nombre} - $${item.precio}%0A`;
+  });
+
+  const total = carrito.reduce((sum, item) => sum + item.precio, 0);
+  mensaje += `%0ATotal: $${total}%0A`;
+
+  // Agregar distribuidor si está seleccionado
+  const selectDistribuidor = document.getElementById('lista-distribuidores');
+  if (selectDistribuidor && selectDistribuidor.options.length > 0) {
+    const distribuidor = selectDistribuidor.options[selectDistribuidor.selectedIndex].text;
+    if (distribuidor && distribuidor !== "Ninguno") {
+      mensaje += `Distribuidor: ${distribuidor}%0A`;
+    }
+  }
+
+  // URL para abrir WhatsApp con mensaje prellenado
+  const urlWhatsApp = `https://wa.me/${numeroTelefono}?text=${mensaje}`;
+
+  // Abrir WhatsApp en nueva pestaña
+  window.open(urlWhatsApp, '_blank');
 }
 
-function cerrarModalCarrito() {
-  document.getElementById('modal-carrito').style.display = 'none';
-}
-
-function abrirSidebar() {
-  document.getElementById('sidebar-carrito').classList.add('abierto');
-}
-
-function cerrarSidebar() {
-  document.getElementById('sidebar-carrito').classList.remove('abierto');
-}
 
 // Al cargar la página, cargar carrito y distribuidores, actualizar UI
 window.onload = function() {
