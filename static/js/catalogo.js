@@ -180,7 +180,7 @@ function cargarCarritoDesdeLocalStorage() {
 // Enviar pedido por WhatsApp
 function enviarPorWhatsApp() {
   if (carrito.length === 0) {
-    alert("El carrito está vacío. Agrega productos antes de enviar el pedido.");
+    mostrarNotificacionError("El carrito está vacío. Agrega productos antes de enviar el pedido.");
     return;
   }
 
@@ -206,6 +206,19 @@ function enviarPorWhatsApp() {
 
   const urlWhatsApp = `https://wa.me/${numeroTelefono}?text=${mensaje}`;
   window.open(urlWhatsApp, '_blank');
+}
+
+function mostrarNotificacionError(mensaje) {
+  const noti = document.getElementById("notificacion-error");
+  noti.querySelector("p").textContent = mensaje;
+
+  noti.classList.remove("oculto");
+  noti.classList.add("visible");
+
+  setTimeout(() => {
+    noti.classList.remove("visible");
+    noti.classList.add("oculto");
+  }, 3000);
 }
 
 // Al cargar la página

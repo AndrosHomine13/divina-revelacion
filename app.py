@@ -55,12 +55,17 @@ def admin():
             ruta_imagen = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             imagen_file.save(ruta_imagen)
 
+            # Generar un ID único para el nuevo producto
+            nuevo_id = max([p.get('id', 0) for p in productos], default=0) + 1
+
             nuevo_producto = {
+                'id': len(productos),  # <<--- ID único
                 'nombre': nombre,
                 'descripcion': descripcion,
                 'precio': precio,
                 'imagen': filename
             }
+
 
             productos.append(nuevo_producto)
             save_products(productos)
@@ -88,6 +93,36 @@ def logout():
     session.pop('logged_in', None)
     flash('Sesión cerrada.', 'success')
     return redirect(url_for('login'))
+
+@app.route('/editar/<int:id>', methods=['GET', 'POST'])
+def editar_producto(id):
+    if 'logged_in' not in session or not session['logged_in']:
+        flash('Debes iniciar sesión para acceder al panel de administración.', 'error')
+        return redirect(url_for('login'))
+
+    productos = load_products()
+    producto = next((p for p in productos if p.get('id') == id), None)
+
+    if not producto:
+        flash('Producto no encontrado.', 'error')
+        return redirect(url_for('admin'))
+
+    if request.method == 'POST':
+        producto['nombre'] = request.form['nombre']
+        producto['descripcion'] = request.form['descripcion']
+        producto['precio'] = request.form['precio']
+
+        imagen_file = request.files['imagen']
+        if imagen_file and imagen_file.filename != '':
+            filename = secure_filename(imagen_file.filename)
+            imagen_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            producto['imagen'] = filename
+
+        save_products(productos)
+        flash('Producto actualizado correctamente', 'success')
+        return redirect(url_for('admin'))
+
+    return render_template('editar_producto.html', producto=producto)
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

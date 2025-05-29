@@ -33,6 +33,13 @@ header {
     height: 60px; /* Altura fija */
 }
 
+.logo-sidebar {
+    display: block;
+    margin: auto;
+    max-width: 220px;
+    height: auto;
+}
+
 nav .nav-link {
     margin: 0 1em;                 /* Separación horizontal */
     text-decoration: none;        /* Sin subrayado */
@@ -52,9 +59,32 @@ nav .nav-link:hover {
 }
 
 .hero {
-    text-align: center; /* Centrado del contenido */
-    padding: 4em 2em; /* Espaciado amplio */
-    background: linear-gradient(to bottom right, #fbe7e0, #fffdfb); /* Degradado suave */
+    position: relative; /* importante */
+    text-align: center;
+    padding: 4em 2em; /* se mantiene como pediste */
+    background: linear-gradient(to bottom right, #fbe7e0, #fffdfb);
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 240px;
+    height: 240px;
+    background-image: url('/static/images/logo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.hero > * {
+    position: relative;
+    z-index: 1;
 }
 
 .hero h1 {
@@ -510,11 +540,32 @@ footer {
 }
 
 .contacto {
-    background-color: #fbeee6;
+    position: relative;
     text-align: center;
-    padding: 3em 2em;
-    border-top: 2px solid #f0d8c8;
-    border-bottom: 2px solid #f0d8c8;
+    background-color: #fef4ee; /* o el color que uses de fondo */
+    padding: 60px 20px;
+    overflow: hidden;
+}
+
+.contacto::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px; /* Ajusta el tamaño del logo de fondo */
+    height: 300px;
+    background-image: url('/static/images/logo.png'); /* Usa aquí tu ruta */
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    opacity: 0.3; /* Esto crea el efecto "marca de agua" */
+    transform: translate(-50%, -50%);
+    z-index: 0; /* Asegura que quede detrás del contenido */
+}
+
+.contacto > * {
+    position: relative;
+    z-index: 1; /* El contenido va encima del fondo */
 }
 
 .contacto h2 {
@@ -685,3 +736,44 @@ footer {
     outline: none;
 }
 
+@keyframes fadeInRight {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.notificacion-error {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #f8d7da;
+  color: #842029;
+  border: 1px solid #f5c2c7;
+  padding: 1em 1.5em;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  font-family: 'Arial', sans-serif;
+  font-size: 0.95em;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(30px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.notificacion-error.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+  animation: fadeInRight 0.4s ease;
+}
+
+.oculto {
+  opacity: 0 !important;
+  pointer-events: none;
+}
