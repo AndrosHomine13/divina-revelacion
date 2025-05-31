@@ -1,1 +1,352 @@
-[]
+[
+    {
+        "id": 0,
+        "nombre": "Arete Estrella y Luna",
+        "descripcion": "  ",
+        "precio": " ",
+        "imagen": "Arete_Estrella_y_Luna.png"
+    },
+    {
+        "id": 1,
+        "nombre": "Arete Trío Rombo",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Arete_Trio_Rombo.JPG"
+    },
+    {
+        "id": 2,
+        "nombre": "Cadena Cruz",
+        "descripcion": " ",
+        "precio": "  ",
+        "imagen": "Cadena_Cruz.png"
+    },
+    {
+        "id": 3,
+        "nombre": "Cadena Declaro",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Cadena_Declaro.png"
+    },
+    {
+        "id": 4,
+        "nombre": "Cadena Doble Luna Creciente",
+        "descripcion": " ",
+        "precio": "28000",
+        "imagen": "Cadena_Doble_Luna_Creciente.JPG"
+    },
+    {
+        "id": 5,
+        "nombre": "Cadena Doble Tótem",
+        "descripcion": " ",
+        "precio": "28000",
+        "imagen": "Cadena_Doble_Totem.png"
+    },
+    {
+        "id": 6,
+        "nombre": "Cadena Equilibra tus Chacras",
+        "descripcion": " ",
+        "precio": "  ",
+        "imagen": "Cadena_Equilibra_tus_Chacras.JPG"
+    },
+    {
+        "id": 7,
+        "nombre": "Cadena Multidijes Corazones de Plata",
+        "descripcion": " ",
+        "precio": "28000",
+        "imagen": "Cadena_Multidijes_Corazones_de_Plata.png"
+    },
+    {
+        "id": 8,
+        "nombre": "Cadena Multidijes Corazones Gold",
+        "descripcion": " ",
+        "precio": "28000",
+        "imagen": "Cadena_Multidijes_Corazones_Gold.png"
+    },
+    {
+        "id": 9,
+        "nombre": "Cadena Multidijes Corazones Negros",
+        "descripcion": " ",
+        "precio": " 28000",
+        "imagen": "Cadena_Multidijes_Corazones_Negros.JPG"
+    },
+    {
+        "id": 10,
+        "nombre": "Cadena Multidijes Eres Magia",
+        "descripcion": " ",
+        "precio": " 28000",
+        "imagen": "Cadena_Multidijes_Eres_Magia.png"
+    },
+    {
+        "id": 11,
+        "nombre": "Cadena Multidijes Mensajes del Universo",
+        "descripcion": " ",
+        "precio": " 28000",
+        "imagen": "Cadena_Multidijes_Mensajes_del_Universo.png"
+    },
+    {
+        "id": 12,
+        "nombre": "Cadena Promesa de Amor",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Cadena_Promesa_de_Amor.png"
+    },
+    {
+        "id": 13,
+        "nombre": "Cadena Sagrado Corazón",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Cadena_Sagrado_Corazon.png"
+    },
+    {
+        "id": 14,
+        "nombre": "Cadena Triple Luna",
+        "descripcion": " ",
+        "precio": "30000",
+        "imagen": "Cadena_Triple_Luna.png"
+    },
+    {
+        "id": 15,
+        "nombre": "Cadena Triple Plata",
+        "descripcion": " ",
+        "precio": "30000",
+        "imagen": "Cadena_Triple_Plata.png"
+    },
+    {
+        "id": 16,
+        "nombre": "Cadena Virgencita",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Cadena_Virgencita.png"
+    },
+    {
+        "id": 17,
+        "nombre": "Cadena y Candonga Corazón",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Cadena_y_Candonga_Corazon.png"
+    },
+    {
+        "id": 18,
+        "nombre": "Cadena Zodiacal",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Cadena_Zodiacal.png"
+    },
+    {
+        "id": 19,
+        "nombre": "Camándula Perla",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Camandula_Perla.JPG"
+    },
+    {
+        "id": 20,
+        "nombre": "Candonga Cereza",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Candonga_Cereza.png"
+    },
+    {
+        "id": 21,
+        "nombre": "Chocker Espiga",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Chocker_Espiga.JPG"
+    },
+    {
+        "id": 22,
+        "nombre": "Collar Marinero Virgen",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Collar_Marinero_Virgen.png"
+    },
+    {
+        "id": 23,
+        "nombre": "Collar Perlas",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Collar_Perlas.png"
+    },
+    {
+        "id": 24,
+        "nombre": "Conjunto Corazón Beige",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Conjunto_Corazon_Beige.png"
+    },
+    {
+        "id": 25,
+        "nombre": "Conjunto Glam",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Conjunto_Glam.png"
+    },
+    {
+        "id": 26,
+        "nombre": "Conjunto Gold",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Conjunto_Gold.JPG"
+    },
+    {
+        "id": 27,
+        "nombre": "Conjunto Silver",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Conjunto_Silver.png"
+    },
+    {
+        "id": 28,
+        "nombre": "Ear Cuff Favorita",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Ear_Cuff_Favorita.JPG"
+    },
+    {
+        "id": 29,
+        "nombre": "Ear Cuff Trío Étnico",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Ear_Cuff_Trio_Etnico.JPG"
+    },
+    {
+        "id": 30,
+        "nombre": "Llavero Corazón Silver",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Llavero_Corazon_Silver.png"
+    },
+    {
+        "id": 31,
+        "nombre": "Llavero Protección",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Llavero_Proteccion.png"
+    },
+    {
+        "id": 32,
+        "nombre": "Pendiente Luna Glam",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Pendiente_Luna_Glam.png"
+    },
+    {
+        "id": 33,
+        "nombre": "Pulsera Ángel de la Guarda",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Pulsera_Angel_de_la_Guarda.png"
+    },
+    {
+        "id": 34,
+        "nombre": "Pulsera Ángeles Guardianes",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Pulsera_Angeles_Guardianes.JPG"
+    },
+    {
+        "id": 35,
+        "nombre": "Pulsera Cósmica",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Pulsera_Cosmica.png"
+    },
+    {
+        "id": 36,
+        "nombre": "Pulsera Feliz Día Papá",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Pulsera_Feliz_Dia_Papa.png"
+    },
+    {
+        "id": 37,
+        "nombre": "Pulsera Intenciones",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Pulsera_Intenciones.png"
+    },
+    {
+        "id": 38,
+        "nombre": "Pulsera Par Estrellas",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Pulsera_Par_Estrellas.png"
+    },
+    {
+        "id": 39,
+        "nombre": "Pulsera Protección Divina",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Pulsera_Proteccion_Divina.png"
+    },
+    {
+        "id": 40,
+        "nombre": "Pulsera Tejida San Benito",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Pulsera_Tejida_San_Benito.JPG"
+    },
+    {
+        "id": 41,
+        "nombre": "Pulsera Trinidad",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Pulsera_Trinidad.png"
+    },
+    {
+        "id": 42,
+        "nombre": "Set Aromaterapia",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Set_Aromaterapia.png"
+    },
+    {
+        "id": 43,
+        "nombre": "Set de Pulseras Amatista",
+        "descripcion": " ",
+        "precio": "30000",
+        "imagen": "Set_de_Pulseras_Amatista.png"
+    },
+    {
+        "id": 44,
+        "nombre": "Set de Pulseras Astronauta",
+        "descripcion": " ",
+        "precio": "30000",
+        "imagen": "Set_de_Pulseras_Astronauta.JPG"
+    },
+    {
+        "id": 45,
+        "nombre": "Set de Pulseras Plateado",
+        "descripcion": " ",
+        "precio": "30000",
+        "imagen": "Set_de_Pulseras_Plateado.png"
+    },
+    {
+        "id": 46,
+        "nombre": "Tobillera Amuleto",
+        "descripcion": " ",
+        "precio": "20000",
+        "imagen": "Tobillera_Amuleto.JPG"
+    },
+    {
+        "id": 47,
+        "nombre": "Tobillera Corazón Blanco",
+        "descripcion": "  ",
+        "precio": "20000",
+        "imagen": "Tobillera_Corazon_Blanco.jpg"
+    },
+    {
+        "id": 48,
+        "nombre": "Topo Corazón Liso",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Topo_Corazon_Liso.JPG"
+    },
+    {
+        "id": 49,
+        "nombre": "Topo G",
+        "descripcion": " ",
+        "precio": " ",
+        "imagen": "Topo_G.png"
+    }
+]
