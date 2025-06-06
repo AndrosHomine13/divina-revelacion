@@ -1,31 +1,37 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
-import json
+from flask_sqlalchemy import SQLAlchemy
 import os
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 app.secret_key = 'tu_clave_secreta'
 
-PRODUCTS_FILE = 'products.json'
+# Conexión a PostgreSQL (usa la variable de entorno en Render)
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+
+# Carpeta para subir imágenes
 UPLOAD_FOLDER = 'static/images/productos'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-def load_products():
-    if os.path.exists(PRODUCTS_FILE):
-        with open(PRODUCTS_FILE, 'r', encoding='utf-8') as f:
-            return json.load(f)
-    return []
+# Modelo de Producto
+class Producto(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nombre = db.Column(db.String(100), nullable=False)
+    descripcion = db.Column(db.String(255), nullable=False)
+    precio = db.Column(db.String(20), nullable=False)
+    imagen = db.Column(db.String(255), nullable=False)
 
-def save_products(products):
-    with open(PRODUCTS_FILE, 'w', encoding='utf-8') as f:
-        json.dump(products, f, indent=4, ensure_ascii=False)
+# Crear tabla al iniciar
+with app.app_context():
+    db.create_all()
 
 @app.route('/')
 def index():
-    with open('products.json', 'r', encoding='utf-8') as f:
-        productos = json.load(f)
+    productos = Producto.query.all()
     return render_template('index.html', productos=productos)
 
 @app.route('/admin', methods=['GET', 'POST'])
@@ -33,15 +39,16 @@ def admin():
     if 'logged_in' not in session or not session['logged_in']:
         flash('Debes iniciar sesión para acceder al panel de administración.', 'error')
         return redirect(url_for('login'))
-    
-    productos = load_products()
+
+    productos = Producto.query.all()
 
     if request.method == 'POST':
         if 'delete' in request.form:
-            index = int(request.form['delete'])
-            if 0 <= index < len(productos):
-                productos.pop(index)
-                save_products(productos)
+            id = int(request.form['delete'])
+            producto = Producto.query.get(id)
+            if producto:
+                db.session.delete(producto)
+                db.session.commit()
                 flash('Producto eliminado', 'success')
             return redirect(url_for('admin'))
 
@@ -55,20 +62,14 @@ def admin():
             ruta_imagen = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             imagen_file.save(ruta_imagen)
 
-            # Generar un ID único para el nuevo producto
-            nuevo_id = max([p.get('id', 0) for p in productos], default=0) + 1
-
-            nuevo_producto = {
-                'id': len(productos),  # <<--- ID único
-                'nombre': nombre,
-                'descripcion': descripcion,
-                'precio': precio,
-                'imagen': filename
-            }
-
-
-            productos.append(nuevo_producto)
-            save_products(productos)
+            nuevo_producto = Producto(
+                nombre=nombre,
+                descripcion=descripcion,
+                precio=precio,
+                imagen=filename
+            )
+            db.session.add(nuevo_producto)
+            db.session.commit()
             flash('Producto agregado correctamente', 'success')
 
         return redirect(url_for('admin'))
@@ -80,7 +81,7 @@ def login():
     if request.method == 'POST':
         usuario = request.form['usuario']
         clave = request.form['clave']
-        if usuario == 'admin' and clave == 'psicologa2020':  # Cambia esto según tu lógica
+        if usuario == 'admin' and clave == 'psicologa2020':
             session['logged_in'] = True
             flash('Has iniciado sesión correctamente.', 'success')
             return redirect(url_for('admin'))
@@ -100,25 +101,23 @@ def editar_producto(id):
         flash('Debes iniciar sesión para acceder al panel de administración.', 'error')
         return redirect(url_for('login'))
 
-    productos = load_products()
-    producto = next((p for p in productos if p.get('id') == id), None)
-
+    producto = Producto.query.get(id)
     if not producto:
         flash('Producto no encontrado.', 'error')
         return redirect(url_for('admin'))
 
     if request.method == 'POST':
-        producto['nombre'] = request.form['nombre']
-        producto['descripcion'] = request.form['descripcion']
-        producto['precio'] = request.form['precio']
+        producto.nombre = request.form['nombre']
+        producto.descripcion = request.form['descripcion']
+        producto.precio = request.form['precio']
 
         imagen_file = request.files['imagen']
         if imagen_file and imagen_file.filename != '':
             filename = secure_filename(imagen_file.filename)
             imagen_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            producto['imagen'] = filename
+            producto.imagen = filename
 
-        save_products(productos)
+        db.session.commit()
         flash('Producto actualizado correctamente', 'success')
         return redirect(url_for('admin'))
 

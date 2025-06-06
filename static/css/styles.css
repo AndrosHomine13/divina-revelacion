@@ -148,7 +148,8 @@ h2 {
 
 /* Zoom en la imagen al pasar el cursor */
 .producto img:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
+    cursor: pointer;
 }
 
 .producto h3 {
@@ -365,8 +366,8 @@ h2 {
     z-index: 100;
     margin: 0 20px;
     transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    text-decoration: none; /* Quita el subrayado en enlaces */
-    color: inherit;        /* Mantiene el color del ícono */
+    text-decoration: none;
+    color: inherit;
     cursor: pointer;       /* Muestra la manito al pasar el mouse */
 }
 
@@ -565,7 +566,7 @@ footer {
 
 .contacto > * {
     position: relative;
-    z-index: 1; /* El contenido va encima del fondo */
+    z-index: 1;
 }
 
 .contacto h2 {
@@ -633,7 +634,7 @@ footer {
 
 .mensaje-wp {
     position: absolute;
-    bottom: 70px; /* Subido sobre el botón */
+    bottom: 70px;
     right: 0;
     background-color: #ffffff;
     color: #444;
@@ -660,12 +661,12 @@ footer {
 /* Responsive para pantallas pequeñas */
 @media (max-width: 768px) {
   header {
-    flex-wrap: wrap; /* Permite que se envuelvan los elementos */
-    padding: 0.8em 1em; /* Reduce padding */
+    flex-wrap: wrap;
+    padding: 0.8em 1em;
   }
 
   .logo {
-    height: 50px; /* Logo más pequeño */
+    height: 50px;
     margin-right: auto; /* Empuja nav a la derecha */
   }
 
@@ -673,12 +674,12 @@ footer {
     display: flex;
     flex: 1;
     justify-content: flex-end; /* Alinea enlaces a la derecha */
-    gap: 0.8em; /* Separación entre enlaces */
-    flex-wrap: wrap; /* Se envuelven si hace falta */
+    gap: 0.8em;
+    flex-wrap: wrap;
   }
 
   nav a {
-    font-size: 0.9em; /* Texto un poco más pequeño */
+    font-size: 0.9em;
     margin: 0 0.4em;
   }
 }
