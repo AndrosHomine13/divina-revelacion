@@ -1,15 +1,14 @@
 {
+  "name": "divina_revelacion_online",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build.js",
   "scripts": {
-    "prebuild": "node build.js",
     "build": "node build.js"
   },
   "dependencies": {
     "gray-matter": "^4.0.3"
   },
-  "name": "divina_revelacion_online",
-  "version": "1.0.0",
-  "description": "",
-  "main": "build.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AndrosHomine13/divina-revelacion.git"
@@ -22,3 +21,4 @@
   },
   "homepage": "https://github.com/AndrosHomine13/divina-revelacion#readme"
 }
+
