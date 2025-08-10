@@ -8,6 +8,7 @@ public_folder: "/static/images"
 collections:
   - name: "productos"
     label: "Productos"
+<<<<<<< HEAD
     file: "static/productos.json"
     fields:
       - label: "Lista de Productos"
@@ -18,3 +19,13 @@ collections:
           - { label: "Descripción", name: "description", widget: "text" }
           - { label: "Precio", name: "price", widget: "number" }
           - { label: "Imagen", name: "image", widget: "image" }
+=======
+    folder: "productos"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nombre", name: "title", widget: "string" }
+      - { label: "Descripción", name: "description", widget: "text" }
+      - { label: "Precio", name: "price", widget: "number" }
+      - { label: "Imagen", name: "image", widget: "image" }
+>>>>>>> 455871b6fff4f625715dbfb16c774735819d32a8

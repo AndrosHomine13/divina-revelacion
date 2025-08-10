@@ -50,40 +50,16 @@
             .then(response => response.json())
             .then(data => {
                 const container = document.getElementById('productos');
-
-                // Detectar si data es un array o tiene propiedad productos
-                const productosArray = Array.isArray(data) ? data : data.productos;
-
-                if (!productosArray || !Array.isArray(productosArray)) {
-                    container.innerHTML = "<p>No hay productos para mostrar.</p>";
-                    return;
-                }
-
-                productosArray.forEach(producto => {
-                    const precioFormateado = Number(producto.price).toLocaleString('es-CO', {
-                        style: 'currency',
-                        currency: 'COP',
-                        minimumFractionDigits: 0
-                    });
-
+                data.forEach(producto => {
                     const div = document.createElement('div');
                     div.classList.add('producto');
                     div.innerHTML = `
                         <img src="${producto.image}" alt="${producto.title}">
                         <h2>${producto.title}</h2>
                         <p>${producto.description}</p>
-                        <span class="precio">${precioFormateado}</span><br>
-                        <button class="btn btn-agregar">Agregar al carrito</button>
+                        <span class="precio">$${producto.price}</span>
                     `;
                     container.appendChild(div);
-                });
-
-                // Agregar evento a todos los botones de agregar al carrito
-                container.querySelectorAll('.btn-agregar').forEach((btn, index) => {
-                    btn.addEventListener('click', () => {
-                        const producto = productosArray[index];
-                        agregarAlCarrito(producto.title, producto.price);
-                    });
                 });
             })
             .catch(err => {
