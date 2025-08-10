@@ -5,5 +5,20 @@
   },
   "dependencies": {
     "gray-matter": "^4.0.3"
-  }
+  },
+  "name": "divina_revelacion_online",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndrosHomine13/divina-revelacion.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndrosHomine13/divina-revelacion/issues"
+  },
+  "homepage": "https://github.com/AndrosHomine13/divina-revelacion#readme"
 }
