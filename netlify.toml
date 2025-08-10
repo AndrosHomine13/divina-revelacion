@@ -1,8 +1,13 @@
 [build]
   publish = "."
-  command = "npm install && npm run build"
+  command = ""
 
 [[redirects]]
-  from = "/admin/*"
-  to = "/admin/index.html"
-  status = 200
+  from = "/admin"
+  to = "/admin/"
+  status = 301
+
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    Content-Security-Policy = "frame-ancestors 'self' https://app.netlify.com"
