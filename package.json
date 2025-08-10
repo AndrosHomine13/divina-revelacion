@@ -1,7 +1,7 @@
 {
   "scripts": {
     "prebuild": "node build.js",
-    "build": "cp -r . dist"
+    "build": "node build.js"
   },
   "dependencies": {
     "gray-matter": "^4.0.3"
