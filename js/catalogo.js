@@ -1,6 +1,45 @@
 // Variable global para almacenar los productos en el carrito
 let carrito = [];
 
+// Cargar productos y renderizar en el DOM
+async function cargarProductos() {
+  try {
+    const response = await fetch('/static/productos.json');
+    if (!response.ok) throw new Error('No se pudo cargar productos.json');
+
+    const productos = await response.json();
+    const contenedor = document.getElementById('productos');
+    contenedor.innerHTML = '';
+
+    productos.forEach(prod => {
+      const precioFormateado = prod.price.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+      const div = document.createElement('div');
+      div.classList.add('producto');
+
+      div.innerHTML = `
+        <img src="${prod.image}" alt="${prod.title}" style="max-width: 150px; height: auto;">
+        <h2>${prod.title}</h2>
+        <p>${prod.description}</p>
+        <p>Precio: $${precioFormateado}</p>
+      `;
+
+      const btn = document.createElement('button');
+      btn.classList.add('btn-ver-carrito');
+      btn.textContent = '🛒 Agregar al carrito';
+      // Guardamos el precio numérico para la suma, no el formateado
+      btn.addEventListener('click', () => {
+        agregarAlCarrito(prod.title, prod.price);
+      });
+
+      div.appendChild(btn);
+      contenedor.appendChild(div);
+    });
+
+  } catch (error) {
+    console.error('Error al cargar productos.json:', error);
+  }
+}
+
 // Carga los distribuidores desde un archivo JSON
 async function cargarDistribuidores() {
   try {
@@ -116,7 +155,10 @@ function actualizarCarritoUI() {
   carrito.forEach((item, indice) => {
     const divModal = document.createElement('div');
     divModal.className = 'item-carrito';
-    divModal.textContent = `${item.nombre} - $${item.precio}`;
+
+    // Formateamos el precio aquí para mostrarlo bonito
+    const precioFormateado = item.precio.toLocaleString('es-ES', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+    divModal.textContent = `${item.nombre} - $${precioFormateado}`;
 
     const btnEliminarModal = document.createElement('button');
     btnEliminarModal.textContent = '✖';
@@ -135,10 +177,10 @@ function actualizarCarritoUI() {
     divSidebar.querySelector('button').onclick = () => eliminarDelCarrito(indice);
     contenedorSidebar.appendChild(divSidebar);
 
-    total += item.precio;
+    total += item.precio;  // suma numérica real
   });
 
-  document.getElementById('total-monto').textContent = `$${total}`;
+  document.getElementById('total-monto').textContent = `$${total.toLocaleString('es-ES', {minimumFractionDigits: 0, maximumFractionDigits: 0})}`;
 
   const tipoCompra = document.getElementById('tipo-compra').value;
   const selectDistribuidor = document.getElementById('lista-distribuidores');
@@ -188,11 +230,13 @@ function enviarPorWhatsApp() {
   let mensaje = "Hola, quiero hacer el siguiente pedido:%0A";
 
   carrito.forEach(item => {
-    mensaje += `- ${item.nombre} - $${item.precio}%0A`;
+    const precioFormateado = item.precio.toLocaleString('es-ES', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+    mensaje += `- ${item.nombre} - $${precioFormateado}%0A`;
   });
 
   const total = carrito.reduce((sum, item) => sum + item.precio, 0);
-  mensaje += `%0ATotal: $${total}%0A`;
+  const totalFormateado = total.toLocaleString('es-ES', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+  mensaje += `%0ATotal: $${totalFormateado}%0A`;
 
   const tipoCompra = document.getElementById('tipo-compra').value;
   const selectDistribuidor = document.getElementById('lista-distribuidores');
@@ -226,11 +270,12 @@ window.onload = async function () {
   cargarCarritoDesdeLocalStorage();
 
   await cargarDistribuidores();
+  await cargarProductos();
 
   const tipoCompraGuardado = localStorage.getItem('tipoCompra');
   if (tipoCompraGuardado) {
     document.getElementById('tipo-compra').value = tipoCompraGuardado;
-    toggleDistribuidores(); // Esto ya actualiza la UI y guarda
+    toggleDistribuidores();
   }
 
   actualizarCarritoUI();

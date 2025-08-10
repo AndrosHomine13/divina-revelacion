@@ -481,52 +481,6 @@ footer {
     margin-top: 4em;
 }
 
-.login-container, .form-admin {
-    max-width: 400px;
-    margin: 2em auto;
-    background: #fffaf5;
-    padding: 1.5em;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(162,107,80,0.2);
-}
-
-.login-container h2, .form-admin h2 {
-    color: #a26b50;
-    text-align: center;
-}
-
-.form-admin label {
-    display: block;
-    margin-top: 1em;
-    font-weight: bold;
-    color: #8b543e;
-}
-
-.form-admin input, .form-admin textarea {
-    width: 100%;
-    padding: 0.5em;
-    border: 1px solid #f0e0d6;
-    border-radius: 5px;
-    margin-top: 0.3em;
-}
-
-.form-admin button {
-    margin-top: 1.5em;
-    width: 100%;
-    padding: 0.8em;
-    background-color: #a26b50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.form-admin button:hover {
-    background-color: #8b543e;
-}
-
 .flashes {
     list-style-type: none;
     padding: 0;
