@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "title": "Collar de plata",
+    "description": "Un elegante collar con dije de luna.",
+    "price": 50000,
+    "image": "/static/images/collar1.jpg"
+  }
+]

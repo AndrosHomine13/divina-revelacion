@@ -51,13 +51,17 @@
             .then(data => {
                 const container = document.getElementById('productos');
                 data.forEach(producto => {
+                    const precioFormateado = producto.price.toLocaleString('es-ES', { 
+                        minimumFractionDigits: 0, 
+                        maximumFractionDigits: 0 
+                    });
                     const div = document.createElement('div');
                     div.classList.add('producto');
                     div.innerHTML = `
                         <img src="${producto.image}" alt="${producto.title}">
                         <h2>${producto.title}</h2>
                         <p>${producto.description}</p>
-                        <span class="precio">$${producto.price}</span>
+                        <span class="precio">$${precioFormateado}</span>
                     `;
                     container.appendChild(div);
                 });
