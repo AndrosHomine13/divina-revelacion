@@ -18,7 +18,7 @@ async function cargarProductos() {
 
       div.innerHTML = `
         <img src="${prod.image}" alt="${prod.title}" style="max-width: 150px; height: auto;">
-        <h2>${prod.title}</h2>
+        <h2 style="font-size: 22px">${prod.title}</h2>
         <p>${prod.description}</p>
         <p>Precio: $${precioFormateado}</p>
       `;
