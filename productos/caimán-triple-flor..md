@@ -1,7 +1,6 @@
 ---
-title: "CAIMÁN TRIPLE FLOR."
-description: "En acrílico"
+title: CAIMÁN TRIPLE FLOR
+description: En acrílico
 price: 10000
-image: ""
+image: /static/images/caimán-triple-flor.jpg
 ---
-
