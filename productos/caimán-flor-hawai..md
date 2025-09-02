@@ -1,7 +1,6 @@
 ---
-title: "CAIMÁN FLOR HAWAI."
-description: "En acrílico"
+title: CAIMÁN FLOR HAWAI
+description: En acrílico
 price: 8000
-image: ""
+image: /static/images/caimán-flor-hawai.jpg
 ---
-
