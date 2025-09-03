@@ -1,5 +1,5 @@
 ---
-title: VIRGENCITA
+title: CADENA VIRGENCITA
 description: |-
   Con baño de oro.
   Incluye topitos. 
