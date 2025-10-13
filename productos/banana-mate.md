@@ -1,6 +1,6 @@
 ---
 title: "Banana Mate"
-description: "Material: Plástico"
+material: "Plástico"
 price: 6000
 image: "/productos/imagenes/banana-mate.jpeg"
 ---

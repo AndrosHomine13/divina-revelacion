@@ -92,7 +92,7 @@ def main():
         with open(filepath, "w", encoding="utf-8") as f:
             f.write("---\n")
             f.write(f'title: "{nombre}"\n')
-            f.write(f'description: "Material: {material}"\n' if material else 'description: ""\n')
+            f.write(f'material: "{material}"\n')
             f.write(f"price: {precio}\n")
             f.write(f'image: "{img_path}"\n')
             f.write("---\n\n")

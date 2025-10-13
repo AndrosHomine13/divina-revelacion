@@ -1,6 +1,6 @@
 ---
 title: "Joyero Viajero"
-description: ""
+material: ""
 price: 22000
 image: "/productos/imagenes/joyero-viajero.jpeg"
 ---

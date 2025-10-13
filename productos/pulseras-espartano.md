@@ -1,6 +1,6 @@
 ---
 title: "Pulseras Espartano"
-description: "Material: Acero"
+material: "Acero"
 price: 35000
 image: "/productos/imagenes/pulseras-espartano.jpeg"
 ---

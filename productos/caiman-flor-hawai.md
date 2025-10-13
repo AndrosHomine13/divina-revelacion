@@ -1,7 +1,7 @@
 ---
 title: "Caimán Flor Hawai"
-description: "Material: Acrílico"
+material: "Acrílico"
 price: 8000
-image: ""
+image: "productos/imagenes/caiman-flor-de-hawai.jpeg"
 ---
 
