@@ -1,5 +1,5 @@
 ---
-title: "Cad. Multid. Maxi Plata"
+title: "Cadena Multidijes Maxi Plata"
 material: "Baño de plata"
 price: 27000
 image: "/productos/imagenes/cad-multid-maxi-plata.png"

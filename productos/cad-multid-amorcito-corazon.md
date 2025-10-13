@@ -1,5 +1,5 @@
 ---
-title: "Cad. Multid. Amorcito Corazón"
+title: "Cadena Multidijes Amorcito Corazón"
 material: "Baño de oro"
 price: 27000
 image: "/productos/imagenes/cad-multid-amorcito-corazon.png"

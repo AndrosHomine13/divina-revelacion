@@ -1,5 +1,5 @@
 ---
-title: "Cad. Cruz Lisa"
+title: "Cadena Cruz Lisa"
 material: "Acero"
 price: 25000
 image: "/productos/imagenes/cad-cruz-lisa.png"
