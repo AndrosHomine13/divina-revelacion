@@ -15,26 +15,25 @@ os.makedirs(IMAGES_FOLDER, exist_ok=True)
 # 🧾 Expresiones regulares
 precio_regex = re.compile(r"Precio:\s*\$?(\d{1,3}(?:\.\d{3})*|\d+)", re.IGNORECASE)
 material_regex = re.compile(r"Material:\s*(.+)", re.IGNORECASE)
-nombre_regex = re.compile(r"^(Cad|Chocker|Conjunto|Collar|Puls|Set|Tobillera|Anillo|Topos|Cand|Aretes|Trío|Ear|Pulseras|Caimán|Horquilla|Banana|Joyero)\.?[^\n]*", re.IGNORECASE)
+nombre_regex = re.compile(
+    r"^(Cad|Chocker|Conjunto|Collar|Puls|Set|Tobillera|Anillo|Topos|Cand|Aretes|Trío|Ear|Pulseras|Caimán|Horquilla|Banana|Joyero)\.?[^\n]*",
+    re.IGNORECASE
+)
 
 # 🔤 Limpieza del nombre para usarlo como filename
 def limpiar_nombre(nombre):
     nombre = nombre.lower().strip()
-    # Normalizar acentos
     nombre = unicodedata.normalize("NFD", nombre).encode("ascii", "ignore").decode("utf-8")
-    # Reemplazar ñ -> n
     nombre = nombre.replace("ñ", "n")
-    # Quitar caracteres no válidos
     nombre = re.sub(r"[^a-z0-9\s\-]", "", nombre)
-    # Reemplazar espacios por guiones
     nombre = re.sub(r"\s+", "-", nombre)
-    # Quitar guiones dobles
     nombre = re.sub(r"-{2,}", "-", nombre)
     return nombre.strip("-")
 
 def main():
-
     productos = []
+
+    # 📖 Extraer texto del PDF
     with pdfplumber.open(PDF_FILE) as pdf:
         for page in pdf.pages:
             text = page.extract_text()
@@ -80,20 +79,22 @@ def main():
         filename = f"{limpiar_nombre(nombre)}.md"
         filepath = os.path.join(OUTPUT_FOLDER, filename)
 
-        # Buscar imagen
-        img_path = None
+        # 🔍 Buscar imagen con ruta compatible
+        img_path = ""
         for ext in [".jpg", ".png", ".jpeg"]:
             possible = os.path.join(IMAGES_FOLDER, limpiar_nombre(nombre) + ext)
             if os.path.exists(possible):
-                img_path = f"/{possible}"
+                # Convertir siempre a formato web con '/'
+                img_path = "/" + possible.replace("\\", "/")
                 break
 
+        # ✏️ Crear el archivo .md (YAML seguro)
         with open(filepath, "w", encoding="utf-8") as f:
             f.write("---\n")
             f.write(f'title: "{nombre}"\n')
             f.write(f'description: "Material: {material}"\n' if material else 'description: ""\n')
-            f.write(f'price: {precio}\n')
-            f.write(f'image: "{img_path if img_path else ""}"\n')
+            f.write(f"price: {precio}\n")
+            f.write(f'image: "{img_path}"\n')
             f.write("---\n\n")
 
         print(f"✅ {nombre} → {filename}")
