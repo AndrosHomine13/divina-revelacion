@@ -28,7 +28,7 @@ function generarProductos() {
 
     return {
       title: data.title || '',
-      description: data.description || '',
+      material: data.material || '',
       price: data.price || 0,
       image: data.image || ''
     };

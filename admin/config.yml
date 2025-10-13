@@ -15,6 +15,6 @@ collections:
     format: "frontmatter"
     fields:
       - { label: "Título", name: "title", widget: "string" }
-      - { label: "Descripción", name: "description", widget: "text" }
+      - { label: "Material", name: "material", widget: "text" }
       - { label: "Precio", name: "price", widget: "number" }
       - { label: "Imagen", name: "image", widget: "image" }
