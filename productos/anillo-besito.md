@@ -1,7 +1,6 @@
 ---
-title: "Anillo Besito"
-material: "Acero"
+title: Anillo BesO
+material: Elaborado en acero
 price: 27000
-image: "/productos/imagenes/anillo-besito.png"
+image: /static/images/besito.jpg
 ---
-
