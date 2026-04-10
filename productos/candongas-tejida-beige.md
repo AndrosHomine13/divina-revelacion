@@ -1,8 +1,8 @@
 ---
 title: Candongas Tejidas Beige
 material: |-
-  Elaboradas en mostacilla.
+  Elaboradas con mostacilla.
   Base en acero.
-price: 25
+price: 25000
 image: /static/images/candonga-tejida-beige.jpg
 ---
