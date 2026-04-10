@@ -1,7 +1,6 @@
 ---
-title: "Candongas Cuadrado"
-material: "Acero"
+title: Candongas Cuadrado
+material: Elaboradas en acero.
 price: 25000
-image: "productos/imagenes/candongas-cuadrado.png"
+image: /static/images/candongas-cuadradas-1.png
 ---
-
