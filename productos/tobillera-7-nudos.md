@@ -1,7 +1,8 @@
 ---
-title: "Tobillera 7 Nudos"
-material: "Baño de oro"
+title: Tobillera 7 Nudos
+material: |-
+  Tejida en hilo rojo.
+  Herrajes con baño de oro.
 price: 20000
-image: "/productos/imagenes/tobillera-7-nudos.png"
+image: /productos/imagenes/tobillera-7-nudos.png
 ---
-
