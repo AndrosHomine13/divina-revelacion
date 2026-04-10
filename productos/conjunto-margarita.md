@@ -1,7 +1,6 @@
 ---
-title: "Conjunto Margarita"
-material: "Baño de oro"
-price: 25000
-image: "productos/imagenes/conjunto-margarita.png"
+title: Conjunto Margarita
+material: Con baño de rodio.
+price: 28000
+image: /static/images/set-margarita.jpg
 ---
-
