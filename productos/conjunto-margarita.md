@@ -1,6 +1,6 @@
 ---
 title: Conjunto Margarita
 material: Con baño de rodio.
-price: 28000
+price: 28
 image: /static/images/set-margarita.jpg
 ---
