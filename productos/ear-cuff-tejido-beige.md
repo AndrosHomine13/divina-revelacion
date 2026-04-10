@@ -1,8 +1,8 @@
 ---
 title: Ear Cuff Tejido Beige
 material: |-
-  Tejido con mostacilla.
+  Elaborado con mostacilla.
   Base con baño de rodio.
-price: 20
+price: 20000
 image: /static/images/ear-cuff-tejido-beige.jpg
 ---
