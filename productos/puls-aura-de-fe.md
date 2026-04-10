@@ -1,7 +1,8 @@
 ---
-title: "Pulsera Aura de Fe"
-material: "Baño de oro"
+title: Pulsera Aura de Fe
+material: |-
+  Con pedrería variada.
+  Herrajes con baño de oro.
 price: 26000
-image: "/productos/imagenes/puls-aura-de-fe.png"
+image: /static/images/set-aura-de-fe.png
 ---
-
