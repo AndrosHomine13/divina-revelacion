@@ -1,7 +1,8 @@
 ---
-title: "Ear Cuff Tejido Dorado"
-material: "Baño de oro"
-price: 22000
-image: "productos/imagenes/ear-cuff-tejido-dorado.png"
+title: Ear Cuff Tejido Dorado
+material: |-
+  Tejido con mostacilla.
+  Base con baño de rodio.
+price: 20
+image: /static/images/ear-cuff-tejido-dorado.jpg
 ---
-
