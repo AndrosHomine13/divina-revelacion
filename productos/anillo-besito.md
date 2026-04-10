@@ -1,8 +1,8 @@
 ---
 title: Anillo Beso
 material: |-
-  Está elaborado en acero.
-  Es graduable.
-price: 25998
+  Elaborado en acero.
+  Diámetro graduable.
+price: 25000
 image: /static/images/besito-2.jpg
 ---
